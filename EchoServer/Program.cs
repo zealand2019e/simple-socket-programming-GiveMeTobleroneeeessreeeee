@@ -7,7 +7,7 @@ namespace EchoServer
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Server.Start();
+            //Server.Start();
             TServer.Start();
         }
     }

@@ -19,8 +19,8 @@ namespace EchoServer
             TcpListener server = null;
             try
             {
-                Int32 port = 7777;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                Int32 port = 7;
+                IPAddress localAddr = IPAddress.Parse("192.168.24.207");
 
                 server = new TcpListener(localAddr, port);
 
@@ -66,10 +66,10 @@ namespace EchoServer
             finally
             {
                 server.Stop();
+                
+            }
                 Console.WriteLine("/nHit enter to continue...");
                 Console.Read();
-            }
-
         }
 
     }

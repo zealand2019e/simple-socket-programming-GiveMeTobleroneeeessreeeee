@@ -12,13 +12,24 @@ namespace EchoServer
     /// </summary>
     public static class TServer
     {
+        
         public static void Start()
         {
 
-            TcpListener serverSocket = new TcpListener(IPAddress.Loopback, 7);
+            TcpListener serverSocket = new TcpListener(7);
             serverSocket.Start();
 
             TcpClient connectionSocket = serverSocket.AcceptTcpClient();
+            DoClient(connectionSocket);
+            
+
+            
+
+        }
+
+        public static void DoClient(TcpClient connectionSocket)
+        {
+            TcpListener serverSocket = new TcpListener(7);
             Console.WriteLine("server activated");
 
             Stream ns = connectionSocket.GetStream();
@@ -27,7 +38,6 @@ namespace EchoServer
             sw.AutoFlush = true;
 
             string message = sr.ReadLine();
-
             Console.WriteLine("received message" + message);
             if (message != null)
                 sw.WriteLine(message.ToUpper());
@@ -38,7 +48,6 @@ namespace EchoServer
             Console.WriteLine("connection socket closed");
             serverSocket.Stop();
             Console.WriteLine("server stopped");
-
         }
     }
 }
